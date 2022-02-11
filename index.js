@@ -8,5 +8,6 @@ const loadURL = ($url) => {
 };
 
 let button = document.createElement("button");
+document.body.appendChild(button);
 button.textContent = "Medusa";
 button.onpointerdown = () => { loadURL("https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"); };
