@@ -16,7 +16,10 @@ const loadURL = ($url) => {
 
   iab.addEventListener("loadstop", () => { 
     iab.executeScript({
-      code: 'document.body.style.backgroundColor = "red";'
+      code: `
+        document.body.style.backgroundColor = "red";
+        webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(msg:"HW"));
+      `
     });
   });
   
