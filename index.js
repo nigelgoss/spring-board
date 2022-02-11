@@ -32,5 +32,10 @@ button.onpointerdown = () => { loadURL("https://injmed.wales.nhs.uk/?ID=38dcf4e3
 
 button = document.createElement("button");
 document.body.appendChild(button);
+button.textContent = "NHS Mail";
+button.onpointerdown = () => { loadURL("https://portal.nhs.net/Home/Login"); };
+
+button = document.createElement("button");
+document.body.appendChild(button);
 button.textContent = "RELOAD";
 button.onpointerdown = () => { location.reload(true); };
