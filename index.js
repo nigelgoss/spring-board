@@ -9,4 +9,4 @@ const loadURL = ($url) => {
 
 let button = document.createElement("button");
 button.textContent = "Medusa";
-button.onpointerdown = () => { $url("https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"); };
+button.onpointerdown = () => { loadURL("https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"); };
