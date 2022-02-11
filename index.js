@@ -1,11 +1,17 @@
-document.body.style.backgroundColor = "lightgreen";
+document.body.style.backgroundColor = "yellow";
 
 let iab;
+let lastInteraction;
 
 const loadURL = ($url) => {
-  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");  
-  setTimeout(() => { iab.close(); }, 15 * 1000);
+  lastInteraction = new Date();
+  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
 };
+
+setInterval(() => {
+  if (new Date() - lastInteraction <= 30 * 1000) { return; }
+  iab.close();
+}, 15 * 1000);
 
 let button = document.createElement("button");
 document.body.appendChild(button);
