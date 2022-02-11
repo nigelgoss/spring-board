@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "pink";
+document.body.style.backgroundColor = "lightgreen";
 
 let iab;
 
