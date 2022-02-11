@@ -1,2 +1,1 @@
-setInterval(() => { alert(1); }, 5000);
-document.body.style.backgroundColor = "red";
+document.body.style.backgroundColor = "blue";
