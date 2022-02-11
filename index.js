@@ -14,7 +14,7 @@ const loadURL = ($url) => {
     lastInteraction = new Date();
   });
 
-  iab.addEventListener("loadStop", () => { 
+  iab.addEventListener("loadstop", () => { 
     iab.executeScript({
       code: 'document.body.style.backgroundColor = "red";'
     });
