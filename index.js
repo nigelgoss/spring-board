@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "white";
+document.body.style.backgroundColor = "purple";
 
 let iab;
 let lastInteraction;
@@ -9,12 +9,11 @@ const loadURL = ($url) => {
   iab.addEventListener("message", () => { document.body.appendChild(document.createTextNode("X")); lastInteraction = new Date(); });
   iab.addEventListener("loadStop", () => { 
     iab.executeScript({
-      code: '\
-        document.body.addEventListener("pointerdown", () => {
-          webkit.messageHandlers.cordova_iab.postMessage("HW");/
-        }, false);\
-     '
-    }
+      code: `document.body.addEventListener("pointerdown", () => {
+               webkit.messageHandlers.cordova_iab.postMessage("HW");
+             }, false);`
+    });
+  });
 };
 
 setInterval(() => {
