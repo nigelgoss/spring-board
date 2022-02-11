@@ -1,8 +1,13 @@
 document.body.style.backgroundColor = "pink";
 
+let iab;
+let lastInteraction;
+
 const loadURL = ($url) => {
   
-  const iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+  lastInteraction = new Date();
+  
+  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
 
   iab.addEventListener("message", ($d) => {
     document.body.appendChild(document.createTextNode("X"));
@@ -16,8 +21,6 @@ const loadURL = ($url) => {
   });
   
 };
-
-let lastInteraction = new Date();
 
 setInterval(() => {
   if (new Date() - lastInteraction <= 30 * 1000) { return; }
