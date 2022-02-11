@@ -1,5 +1,5 @@
 document.body.style.backgroundColor = "purple";
-
+alert(1);
 let iab;
 let lastInteraction;
 
@@ -9,9 +9,7 @@ const loadURL = ($url) => {
   iab.addEventListener("message", ($d) => { document.body.appendChild(document.createTextNode($d.data.msg)); lastInteraction = new Date(); });
   iab.addEventListener("loadStop", () => { 
     iab.executeScript({
-      code: `document.body.addEventListener("pointerdown", () => {
-               webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"}));
-             }, false);`
+      code: 'webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"}));'
     });
   });
 };
