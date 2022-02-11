@@ -1,6 +1,6 @@
 document.body.style.backgroundColor = "yellow";
 
-const iab;
+let iab;
 let monitoring;
 
 setInterval(() => {
