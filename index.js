@@ -1,23 +1,23 @@
-document.body.style.backgroundColor = "lightblue";
-
-let iab;
-let lastInteraction;
-
-iab.addEventListener("message", ($d) => {
-  document.body.appendChild(document.createTextNode("X"));
-  lastInteraction = new Date();
-});
-
-iab.addEventListener("loadStop", () => { 
-  iab.executeScript({
-    code: 'setInterval(() => { webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"})); }, 1000);'
-  });
-});
+document.body.style.backgroundColor = "pink";
 
 const loadURL = ($url) => {
-  lastInteraction = new Date();
-  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+  
+  const iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+
+  iab.addEventListener("message", ($d) => {
+    document.body.appendChild(document.createTextNode("X"));
+    lastInteraction = new Date();
+  });
+
+  iab.addEventListener("loadStop", () => { 
+    iab.executeScript({
+      code: 'setInterval(() => { webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"})); }, 1000);'
+    });
+  });
+  
 };
+
+let lastInteraction = new Date();
 
 setInterval(() => {
   if (new Date() - lastInteraction <= 30 * 1000) { return; }
