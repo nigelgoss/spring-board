@@ -1,10 +1,28 @@
 document.body.style.backgroundColor = "yellow";
 
-const loadURL = ($url) => {
-  
-  const iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+const iab;
+let monitoring;
 
-  iab.addEventListener("message", () => { iab.close(); });
+setInterval(() => {
+  if (new Date() - monitoring <= 60 * 1000) { return; }
+  iab.close();
+}, 5000);
+
+const loadURL = ($url) => {
+
+  monitoring = new Date();
+  
+  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+
+  iab.addEventListener("message", ($d) => {
+    if ($d.data.msg === "monitoring") {
+      monitoring = new Date();
+      return;
+    }
+    if ($d.data.msg === "forceClose") {
+      iab.close();
+    }
+  });
 
   iab.addEventListener("loadstop", () => { 
     iab.executeScript({ code: `
@@ -14,6 +32,7 @@ const loadURL = ($url) => {
         document.body.style.opacity = "1";
       });
       setInterval(() => {
+        webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"monitoring"}));
         const inactiveFor = new Date() - cordovaLast;
         if (inactiveFor <= 2 * 60 * 1000) { return; }
         document.body.style.opacity = "0.3";
