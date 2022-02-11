@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "pink";
+document.body.style.backgroundColor = "yellow";
 
 let iab;
 let lastInteraction;
@@ -10,15 +10,18 @@ const loadURL = ($url) => {
   iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
 
   iab.addEventListener("message", ($d) => {
-    document.body.appendChild(document.createTextNode("X"));
+    document.body.appendChild(document.createTextNode($d.data.msg));
     lastInteraction = new Date();
   });
 
   iab.addEventListener("loadstop", () => { 
-    iab.executeScript({ code: '\
-      document.body.style.backgroundColor = "red";\
-      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"}));\
-    '});
+    iab.executeScript({ code: `
+      document.body.style.backgroundColor = "red";
+      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"loadstop"}));
+      document.body.addEventListener("pointerdown", () => {
+        webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"pointerdown"}));
+      });
+    `});
   });
   
 };
