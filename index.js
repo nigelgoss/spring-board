@@ -1,35 +1,29 @@
 document.body.style.backgroundColor = "yellow";
 
-let iab;
-let lastInteraction;
-
 const loadURL = ($url) => {
   
-  lastInteraction = new Date();
-  
-  iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
+  const iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
 
-  iab.addEventListener("message", ($d) => {
-    document.body.appendChild(document.createTextNode($d.data.msg));
-    lastInteraction = new Date();
-  });
+  iab.addEventListener("message", () => { iab.close(); });
 
   iab.addEventListener("loadstop", () => { 
     iab.executeScript({ code: `
-      document.body.style.backgroundColor = "red";
-      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"loadstop"}));
+      let cordovaLast = new Date();
       document.body.addEventListener("pointerdown", () => {
-        webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"pointerdown"}));
+        cordovaLast = new Date();
+        document.body.style.opacity = "1";
       });
+      setInterval(() => {
+        const inactiveFor = new Date() - cordovaLast;
+        if (inactiveFor <= 2 * 60 * 1000) { return; }
+        document.body.style.opacity = "0.3";
+        if (inactiveFor <= 3 * 60 * 1000) { return; }
+        webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"forceClose"}));
+      }, 10 * 1000);
     `});
   });
   
 };
-
-setInterval(() => {
-  if (new Date() - lastInteraction <= 30 * 1000) { return; }
-  iab.close();
-}, 5 * 1000);
 
 let button = document.createElement("button");
 document.body.appendChild(button);
