@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "green";
+document.body.style.backgroundColor = "pink";
 
 let iab;
 let lastInteraction;
@@ -17,7 +17,7 @@ const loadURL = ($url) => {
   iab.addEventListener("loadstop", () => { 
     iab.executeScript({ code: '\
       document.body.style.backgroundColor = "red";\
-      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(msg:"HW"));\
+      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"}));\
     '});
   });
   
