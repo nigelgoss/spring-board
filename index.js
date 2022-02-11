@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "orange";
+document.body.style.backgroundColor = "white";
 
 let iab;
 let lastInteraction;
@@ -7,12 +7,14 @@ const loadURL = ($url) => {
   lastInteraction = new Date();
   iab = cordova.InAppBrowser.open($url, "_blank", "cleardata=yes,location=no,closebuttoncaption=Exit,lefttoright=yes,hidespinner=yes,toolbarposition=top,navigationbuttoncolor=#FFFFFF,closebuttoncolor=#FFFFFF,toolbarcolor=#005EB8");
   iab.addEventListener("message", () => { document.body.appendChild(document.createTextNode("X")); lastInteraction = new Date(); });
-  iab.executeScript({
-    code: '\
-      document.body.addEventListener("pointerdown", () => {
-        webkit.messageHandlers.cordova_iab.postMessage("HW");/
-      }, false);\
-   '
+  iab.addEventListener("loadStop", () => { 
+    iab.executeScript({
+      code: '\
+        document.body.addEventListener("pointerdown", () => {
+          webkit.messageHandlers.cordova_iab.postMessage("HW");/
+        }, false);\
+     '
+    }
 };
 
 setInterval(() => {
