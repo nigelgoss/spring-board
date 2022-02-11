@@ -10,7 +10,7 @@ iab.addEventListener("message", ($d) => {
 
 iab.addEventListener("loadStop", () => { 
   iab.executeScript({
-    code: 'setTimeout(() => { webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"})); }, 1000);'
+    code: 'setInterval(() => { webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"HW"})); }, 1000);'
   });
 });
 
