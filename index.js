@@ -16,7 +16,7 @@ const loadURL = ($url) => {
 
   iab.addEventListener("loadStop", () => { 
     iab.executeScript({
-      code: 'alert(1);'
+      code: 'document.body.style.backgroundColor = "red";'
     });
   });
   
