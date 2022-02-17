@@ -2,7 +2,7 @@ document.body.style = "margin:1em; display:grid; grid-gap:1em; grid-template-col
 
 const style = document.createElement("style");
 document.head.appendChild(style);
-style.textContent = "button { padding:3em; }";
+style.textContent = "button { padding:3em; font-family:Cursive; }";
 
 let iab;
 let monitoring;
