@@ -1,4 +1,4 @@
-document.body.style = "height:100vh; display:grid; grid-gap:1em; grid-template-columns:repeat(4, minmax(0, 1fr)); grid-template-rows:repeat(6, minmax(0, 1fr));";
+document.body.style = "margin:0; height:100vh; display:grid; grid-gap:1em; grid-template-columns:repeat(4, minmax(0, 1fr)); grid-template-rows:repeat(6, minmax(0, 1fr));";
 
 let iab;
 let monitoring;
@@ -74,6 +74,11 @@ document.body.appendChild(button);
 button.textContent = "NHS Mail";
 button.onpointerdown = () => { loadURL("https://portal.nhs.net/Home/Login"); };
 button = document.createElement("button");
+
+button = document.createElement("button");
+document.body.appendChild(button);
+button.textContent = "NHS Mail";
+button.onpointerdown = () => { loadURL("https://portal.nhs.net/Home/Login"); };
 
 button = document.createElement("button");
 document.body.appendChild(button);
