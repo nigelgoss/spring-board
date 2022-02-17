@@ -1,9 +1,5 @@
 document.body.style = "margin:1em; display:grid; grid-gap:1em; grid-template-columns:repeat(4, minmax(0, 1fr)); grid-template-rows:repeat(6, minmax(0, 1fr));";
 
-const style = document.createElement("style");
-document.head.appendChild(style);
-style.textContent = "button { padding:3em; font-family:Cursive; }";
-
 let iab;
 let monitoring;
 
