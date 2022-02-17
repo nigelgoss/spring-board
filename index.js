@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = "yellow";
+document.body.style = "dsplay:grid; grid-gap:1em; grid-template-columns:repeat(4, minmax(0, 1fr)); grid-template-rows:repeat(6, minmax(0, 1fr));";
 
 let iab;
 let monitoring;
