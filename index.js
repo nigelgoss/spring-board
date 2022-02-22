@@ -8,7 +8,6 @@ let monitoring;
 setInterval(() => {
 	if (new Date() - monitoring <= inactivityTimout) { return; }
 	iab.close();
-	button.textContent = "Monitoring";
 }, 5000);
 
 const loadURL = ($url) => {
@@ -24,7 +23,6 @@ const loadURL = ($url) => {
     		}
 		if ($d.data.msg === "forceClose") {
 			iab.close();
-			button.textContent = "Force";
 		}
 	});
 
@@ -58,7 +56,7 @@ style.textContent = "button { font-family:inherit; font-size:inherit; padding:0.
 
 const main = document.createElement("main");
 document.body.appendChild(main);
-main.style = "font-family:Cursive; font-size:1.5em; padding:1em; height:100%; box-sizing:border-box; display:grid; grid-gap:1em; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); grid-template-rows:repeat(auto-fit, 100px);";
+main.style = "font-family:Arial; font-size:1.5em; padding:1em; height:100%; box-sizing:border-box; display:grid; grid-gap:1em; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); grid-template-rows:repeat(auto-fit, 100px);";
 
 [
 
