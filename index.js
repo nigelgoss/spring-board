@@ -69,7 +69,7 @@ main.style = "font-family:Arial; background-color:#E8EDEE; font-size:1.5em; padd
 	const button = document.createElement("button");
 	main.appendChild(button);
 	button.textContent = $v[0];
-	button.onpointerdown = () => { loadURL($v[1]); };
+	button.onclick = () => { loadURL($v[1]); };
 
 });
 
