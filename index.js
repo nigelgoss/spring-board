@@ -1,4 +1,4 @@
-const inactivityTimeout = 15 * 60 * 1000;
+const inactivityTimeout = 1.5 * 60 * 1000;
 
 document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:#E8EDEE";
 
