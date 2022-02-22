@@ -1,4 +1,4 @@
-const inactivityTimeout = 1 * 60 * 1000;
+const inactivityTimeout = 15 * 60 * 1000;
 
 document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:#E8EDEE";
 
@@ -60,21 +60,11 @@ main.style = "font-family:Arial; font-size:1.5em; padding:1em; height:100%; box-
 
 [
 
+["Intranet", "http://intranetthh.hilldomain.thh.nhs.uk/"],
+["iReporter", "http://infoweb.hilldomain.thh.nhs.uk/iReporter/"],
 ["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
 ["NHS Mail", "https://portal.nhs.net/Home/Login"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["NHS Mail", "https://portal.nhs.net/Home/Login"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["NHS Mail", "https://portal.nhs.net/Home/Login"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["NHS Mail", "https://portal.nhs.net/Home/Login"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
-["NHS Mail", "https://portal.nhs.net/Home/Login"],
-["Medusa", "https://injmed.wales.nhs.uk/?ID=38dcf4e35ed00c17c0f54cc9b7bb4033346"],
+["Birth Rate Plus", "https://acuity.birthrateplus.co.uk/login"],
 
 ].forEach(($v) => {
 
