@@ -1,6 +1,6 @@
 const inactivityTimeout = 1 * 60 * 1000;
 
-document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:#E8EDEE;";
+document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:yellow; #E8EDEE";
 
 let iab;
 let monitoring;
@@ -44,6 +44,8 @@ const loadURL = ($url) => {
 				if (inactiveFor <= ${inactivityTimeout}) { return; }
 				webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"forceClose"}));
 			}, 5000);
+			
+			alert(inactivityTimeout);
 			
 		`});
 	});
