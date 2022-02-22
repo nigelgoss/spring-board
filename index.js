@@ -74,6 +74,6 @@ main.style = "font-family:Arial; background-color:#E8EDEE; font-size:1.5em; padd
 });
 
 const button = document.createElement("button");
-document.body.appendChild(button);
+main.appendChild(button);
 button.textContent = "RELOAD";
 button.onpointerdown = () => { location.reload(true); };
