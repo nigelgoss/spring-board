@@ -1,4 +1,4 @@
-const inactivityTimout = 1 * 60 * 1000;
+const inactivityTimeout = 1 * 60 * 1000;
 
 document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:#E8EDEE;";
 
@@ -6,8 +6,9 @@ let iab;
 let monitoring;
 
 setInterval(() => {
-	  if (new Date() - monitoring <= 60 * 1000) { return; }
-	  iab.close();
+	if (new Date() - monitoring <= inactivityTimout) { return; }
+	iab.close();
+	button.textContent = "Monitoring";
 }, 5000);
 
 const loadURL = ($url) => {
@@ -23,6 +24,7 @@ const loadURL = ($url) => {
     		}
 		if ($d.data.msg === "forceClose") {
 			iab.close();
+			button.textContent = "Force";
 		}
 	});
 
@@ -39,11 +41,11 @@ const loadURL = ($url) => {
 			setInterval(() => {
 				webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"monitoring"}));
 				const inactiveFor = new Date() - cordovaLast;
-				if (inactiveFor <= 0.9 * ${inactivityTimout}) { return; }
+				if (inactiveFor <= 0.9 * ${inactivityTimeout}) { return; }
 				document.body.style.opacity = "0.3";
-				if (inactiveFor <= ${inactivityTimout}) { return; }
+				if (inactiveFor <= ${inactivityTimeout}) { return; }
 				webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({msg:"forceClose"}));
-			}, 10 * 1000);
+			}, 5000);
 			
 		`});
 	});
