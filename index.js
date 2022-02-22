@@ -1,6 +1,6 @@
 const inactivityTimout = 1 * 60 * 1000;
 
-document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:yellow;";
+document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:yellow; #E8EDEE;";
 
 let iab;
 let monitoring;
@@ -56,7 +56,7 @@ style.textContent = "button { font-family:inherit; font-size:inherit; padding:0.
 
 const main = document.createElement("main");
 document.body.appendChild(main);
-main.style = "font-family:Arial; background-color:#E8EDEE; font-size:1.5em; padding:1em; height:100%; box-sizing:border-box; display:grid; grid-gap:1em; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); grid-template-rows:repeat(auto-fit, 100px);";
+main.style = "font-family:Cursive; font-size:1.5em; padding:1em; height:100%; box-sizing:border-box; display:grid; grid-gap:1em; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); grid-template-rows:repeat(auto-fit, 100px);";
 
 [
 
