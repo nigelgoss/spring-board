@@ -1,4 +1,4 @@
-document.body.style = "height:100vh; width:100vw; margin:0; overflow:hidden;";
+document.body.style = "height:100vh; width:100vw; margin:0; overflow:hidden; height:-webkit-fill-available; width:-webkit-fill-available;";
 
 let iab;
 let monitoring;
