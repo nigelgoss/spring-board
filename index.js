@@ -85,9 +85,6 @@ main.style = "font-family:Cursive; font-size:1.5em; padding:1em; height:100%; bo
 
 });
 
-const console = document.createElement("div");
-main.appendChild(console);
-
 const button = document.createElement("button");
 main.appendChild(button);
 button.textContent = "RELOAD";
