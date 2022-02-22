@@ -1,4 +1,4 @@
-document.body.style = "height:100dvh; width:100dvw; margin:0; height:-webkit-fill-available; width:-webkit-fill-available;";
+document.body.style = "height:100dvh; width:100dvw; margin:0;";
 
 let iab;
 let monitoring;
@@ -7,6 +7,12 @@ setInterval(() => {
 	  if (new Date() - monitoring <= 60 * 1000) { return; }
 	  iab.close();
 }, 5000);
+
+const consoleLog = ($v) => {
+	const div = document.createElement("div");
+	console.appendChild(div);
+	div.textContent = new Date().toLocaleString() + " " + $v;
+};
 
 const loadURL = ($url) => {
 
@@ -17,9 +23,11 @@ const loadURL = ($url) => {
 	iab.addEventListener("message", ($d) => {
 		if ($d.data.msg === "monitoring") {
 			monitoring = new Date();
+			consoleLog("monitoring"); 
 			return;
     		}
 		if ($d.data.msg === "forceClose") {
+			consoleLog("forceClose"); 
 			iab.close();
 		}
 	});
@@ -82,6 +90,9 @@ main.style = "font-family:Arial; background-color:#E8EDEE; font-size:1.5em; padd
 	button.onclick = () => { loadURL($v[1]); };
 
 });
+
+const console = document.createElement("div");
+main.appendChild(console);
 
 const button = document.createElement("button");
 main.appendChild(button);
