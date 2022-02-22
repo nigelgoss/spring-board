@@ -1,6 +1,6 @@
 const inactivityTimeout = 1 * 60 * 1000;
 
-document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:red; #E8EDEE";
+document.body.style = "height:100dvh; width:100dvw; margin:0; background-color:#E8EDEE";
 
 let iab;
 let monitoring;
